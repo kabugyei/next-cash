@@ -2,7 +2,6 @@
 
 import { UserButton } from "@clerk/nextjs";
 import { ChartColumnBigIcon } from "lucide-react";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const UserDropDown = () => {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { ChartBarIcon, ChartColumnBigIcon } from "lucide-react";
+import { ChartColumnBigIcon } from "lucide-react";
 import {
   ClerkProvider,
   SignedIn,
