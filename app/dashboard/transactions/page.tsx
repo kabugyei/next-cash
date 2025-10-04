@@ -25,7 +25,6 @@ import numeral from "numeral";
 import { Badge } from "@/components/ui/badge";
 import Filters from "./filters";
 import getTransactionYearsRange from "@/data/getTransactionYearsRange";
-import CashflowFilters from "./cashflow-filters";
 
 const today = new Date();
 

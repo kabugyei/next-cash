@@ -4,7 +4,7 @@ import { transactionsTable } from "@/db/schema";
 import { transactionSchema } from "@/validation/transactionSchema";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
-import z, { number } from "zod";
+import z from "zod";
 
 const updateTransactionSchema = transactionSchema.and(
   z.object({

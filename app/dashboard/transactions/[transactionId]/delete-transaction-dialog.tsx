@@ -14,7 +14,7 @@ import {
 import { Trash2Icon } from "lucide-react";
 import { deleteTransaction } from "./actions";
 import { toast } from "sonner";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const DeleteTransactionDialog = ({
   transactionId,

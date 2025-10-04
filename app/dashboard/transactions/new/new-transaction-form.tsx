@@ -8,7 +8,6 @@ import z from "zod";
 import createTransaction from "./actions";
 import { format } from "date-fns";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const NewTransactionForm = ({ categories }: { categories: Category[] }) => {
