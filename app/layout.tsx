@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import { ChartBarIcon, ChartColumnBigIcon } from "lucide-react";
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+} from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
+import UserDropDown from "./user-dropdown";
+import { Toaster } from "@/components/ui/sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -23,12 +31,45 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${poppins.variable} antialiased `}>
+          <nav className="flex items-center justify-between bg-primary text-white h-20 p-4">
+            <Link
+              href="/"
+              className="flex items-center gap-1 font-bold text-2xl"
+            >
+              <ChartColumnBigIcon className="text-lime-500" />
+              NextCash
+            </Link>
+            <div>
+              <SignedOut>
+                <div className="flex items-center">
+                  <Button
+                    asChild
+                    variant="link"
+                    className="text-white hover:cursor-pointer"
+                  >
+                    <SignInButton />
+                  </Button>
+                  <Button
+                    asChild
+                    variant="link"
+                    className="text-white hover:cursor-pointer"
+                  >
+                    <SignUpButton />
+                  </Button>
+                </div>
+              </SignedOut>
+              <SignedIn>
+                <UserDropDown />
+              </SignedIn>
+            </div>
+          </nav>
+          {children}
+          <Toaster richColors />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
