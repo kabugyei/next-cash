@@ -28,13 +28,13 @@ import { type Category } from "@/types/Categories";
 
 export const transactionFormSchema = z.object({
   transactionType: z.enum(["income", "expense"]),
-  //categoryId: z.coerce.number().positive("Please select a category"),
-  categoryId: z.number(),
+  categoryId: z.coerce.number<number>().positive("Please select a category"),
+  //categoryId: z.number(),
   transactionDate: z
     .date()
     .max(addDays(new Date(), 1), "Transaction date cannot be in the future"),
-  //amount: z.coerce.number().positive("Amount must be greater than 0"),
-  amount: z.number(),
+  amount: z.coerce.number<number>().positive("Amount must be greater than 0"),
+  //amount: z.number(),
   description: z
     .string()
     .min(3, "Description must contain at least 3 characters")
